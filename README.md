@@ -7,6 +7,8 @@ This repository contains a lightweight phishing script built with PHP, featuring
 ## 📌 About
 This phishing script is a single-page platform designed to capture login data with advanced logging and notification capabilities. It includes a basic login template, robust anti-crawler protections, and session timeout features to simulate a secure environment while collecting data.
 
+For any adjustments, tips or custom landing pages, please visit the contact page at [marnixleijder.github.io](https://marnixleijder.github.io/).
+
 ## 🛠️ Features
 1. **Single-page phishing platform**
    - Real-time notifications on Telegram
