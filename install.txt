@@ -1,0 +1,54 @@
+sudo apt update -y && sudo apt upgrade -y && sudo apt install apache2 certbot python3-certbot-apache -y && sudo systemctl start apache2 && sudo systemctl enable apache2 && sudo apt install php libapache2-mod-php php-curl php-mbstring composer -y && sudo chown -R www-data:www-data /var/www/html && sudo chmod -R 755 /var/www/html && cd /var/www/html && composer require whichbrowser/parser
+
+sudo a2enmod ssl
+sudo a2enmod rewrite
+
+sudo mkdir -p /var/www/html/logs
+sudo chown www-data:www-data /var/www/html/logs
+sudo chmod 775 /var/www/html/logs
+
+ls -l /etc/apache2/sites-enabled/
+sudo a2dissite default-ssl.conf
+sudo a2ensite 000-default.conf
+
+sudo certbot certonly --standalone -d DOMAIN
+
+sudo nano /etc/apache2/sites-available/000-default.conf
+
+<VirtualHost *:80>
+    ServerName DOMAIN
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /index.php [L,QSA]
+
+    <Directory /var/www/html/logs>
+        Require all denied
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName DOMAIN
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    SSLEngine On
+    SSLCertificateFile /etc/ssl/certs/fullchain.pem
+    SSLCertificateKeyFile /etc/ssl/private/privkey.pem
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /index.php [L,QSA]
+
+    <Directory /var/www/html/logs>
+        Require all denied
+    </Directory>
+</VirtualHost>
+
+sudo apache2ctl configtest
+sudo systemctl restart apache2

